@@ -34,43 +34,36 @@ API de gerenciamento de **Categorias** e **Produtos** com suporte a CRUD e pagin
 ## 🔹 Estrutura do Projeto
 
 DEVLOOM_CATALOG/
-│
 ├─ Controllers/
-│ ├─ CategoriaController.cs
-│ └─ ProdutoController.cs
-│
+│  ├─ CategoriaController.cs
+│  └─ ProdutoController.cs
 ├─ Domain/
-│ ├─ Categoria.cs
-│ └─ Produto.cs
-│
+│  ├─ Categoria.cs
+│  └─ Produto.cs
 ├─ Infra/
-│ ├─ Interfaces/
-│ │ ├─ ICategoriaRepository.cs
-│ │ └─ IProdutoRepository.cs
-│ └─ Repositories/
-│ ├─ CategoriaRepository.cs
-│ └─ ProdutoRepository.cs
-│
+│  ├─ Interfaces/
+│  │  ├─ ICategoriaRepository.cs
+│  │  └─ IProdutoRepository.cs
+│  └─ Repositories/
+│     ├─ CategoriaRepository.cs
+│     └─ ProdutoRepository.cs
 ├─ Services/
-│ ├─ Interfaces/
-│ │ ├─ ICategoriaService.cs
-│ │ └─ IProdutoService.cs
-│ └─ Service/
-│ ├─ CategoriaService.cs
-│ └─ ProdutoService.cs
-│
+│  ├─ Interfaces/
+│  │  ├─ ICategoriaService.cs
+│  │  └─ IProdutoService.cs
+│  └─ Service/
+│     ├─ CategoriaService.cs
+│     └─ ProdutoService.cs
 ├─ Application/
-│ ├─ DTOs/
-│ │ ├─ CategoriaRequestDto.cs
-│ │ ├─ CategoriaResponseDto.cs
-│ │ ├─ ProdutoRequestDto.cs
-│ │ └─ ProdutoResponseDto.cs
-│ └─ Mappings/
-│ └─ CatalogoProfile.cs
-│
+│  ├─ DTOs/
+│  │  ├─ CategoriaRequestDto.cs
+│  │  ├─ CategoriaResponseDto.cs
+│  │  ├─ ProdutoRequestDto.cs
+│  │  └─ ProdutoResponseDto.cs
+│  └─ Mappings/
+│     └─ CatalogoProfile.cs
 ├─ Program.cs
 └─ DEVLOOM_CATALOG.csproj
-
 
 ## 🔹 Configuração e Execução
 
