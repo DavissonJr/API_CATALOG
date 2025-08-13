@@ -71,6 +71,7 @@ DEVLOOM_CATALOG/
 ├─ Program.cs
 └─ DEVLOOM_CATALOG.csproj
 
+
 ## 🔹 Configuração e Execução
 
 1. **Clonar o repositório:**
