@@ -55,5 +55,37 @@ namespace DEVLOOM_CATALOG.Controllers
 
             return Ok(retorno);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> BuscaProdutoPorIdAsync(Guid id)
+        {
+            var produto = await _produtoService.BuscaPorIdAsync(id);
+            if (produto == null) return NotFound("Produto não encontrado.");
+
+            var produtoDto = _mapper.Map<ProdutoResponseDto>(produto);
+            return Ok(produtoDto);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> AtualizarProdutoAsync(Guid id, [FromBody] ProdutoRequestDto produtoDto)
+        {
+            var produto = _mapper.Map<Produto>(produtoDto);
+            produto.Id = id;
+
+            var resultado = await _produtoService.AtualizarAsync(produto);
+            if (!resultado) return NotFound("Erro ao atualizar produto.");
+
+            var produtoResponse = _mapper.Map<ProdutoResponseDto>(produto);
+            return Ok(produtoResponse);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletarProdutoAsync(Guid id)
+        {
+            var resultado = await _produtoService.DeletarAsync(id);
+            if (!resultado) return NotFound("Produto não encontrado.");
+
+            return NoContent();
+        }
     }
 }

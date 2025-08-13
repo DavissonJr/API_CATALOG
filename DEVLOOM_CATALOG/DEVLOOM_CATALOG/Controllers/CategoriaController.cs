@@ -37,5 +37,49 @@ namespace DEVLOOM_CATALOG.Controllers
             var categoriasDto = categorias.Select(c => _mapper.Map<CategoriaResponseDto>(c));
             return Ok(categoriasDto);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> BuscaCategoriaPorIdAsync(Guid id)
+        {
+            var categoria = await _categoriaService.BuscaPorIdAsync(id);
+            if (categoria == null)
+                return NotFound("Categoria não encontrada.");
+
+            var categoriaDto = _mapper.Map<CategoriaResponseDto>(categoria);
+            return Ok(categoriaDto);
+        }
+
+        [HttpGet("nome/{nome}")]
+        public async Task<IActionResult> BuscaCategoriaPorNomeAsync(string nome)
+        {
+            var categoria = await _categoriaService.BuscaPorNomeAsync(nome);
+            if (categoria == null)
+                return NotFound("Categoria não encontrada.");
+
+            var categoriaDto = _mapper.Map<CategoriaResponseDto>(categoria);
+            return Ok(categoriaDto);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> AtualizarCategoriaAsync(Guid id, [FromBody] CategoriaRequestDto categoriaDto)
+        {
+            var categoria = _mapper.Map<Categoria>(categoriaDto);
+            categoria.Id = id;
+
+            var resultado = await _categoriaService.AtualizarAsync(categoria);
+            if (!resultado) return NotFound("Erro ao atualizar categoria.");
+
+            var categoriaResponse = _mapper.Map<CategoriaResponseDto>(categoria);
+            return Ok(categoriaResponse);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletarCategoriaAsync(Guid id)
+        {
+            var resultado = await _categoriaService.DeletarAsync(id);
+            if (!resultado) return NotFound("Categoria não encontrada.");
+
+            return NoContent();
+        }
     }
 }
